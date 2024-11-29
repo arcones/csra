@@ -1,0 +1,10 @@
+name: Python3 Build, Test & Publish
+on: [push]
+jobs:
+  python3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: pip install -r requirements
+      - run: python -m unittest discover
