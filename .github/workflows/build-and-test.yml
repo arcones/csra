@@ -1,7 +1,7 @@
-name: Python3 Build, Test & Publish
-on: [push]
+name: Python3 Test, Build & Publish
+on: [ push ]
 jobs:
-  build-test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,8 +12,13 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pip install -e .
       - run: python -m unittest discover
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: python -m build
   pypi-publish:
-    needs: build-test
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: pypi
@@ -21,5 +26,4 @@ jobs:
     permissions:
       id-token: write
     steps:
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: pypa/gh-action-pypi-publish@release/v1
