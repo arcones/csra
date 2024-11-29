@@ -12,3 +12,13 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pip install -e .
       - run: python -m unittest discover
+  pypi-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/csra
+    permissions:
+      id-token: write
+    steps:
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
