@@ -22,4 +22,5 @@ jobs:
     permissions:
       id-token: write
     steps:
+      - run: ls -lrta
       - uses: pypa/gh-action-pypi-publish@release/v1
