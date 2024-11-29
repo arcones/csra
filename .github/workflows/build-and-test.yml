@@ -1,7 +1,7 @@
 name: Python3 Build, Test & Publish
 on: [push]
 jobs:
-  build-test-publish:
+  build-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,6 +13,7 @@ jobs:
       - run: pip install -e .
       - run: python -m unittest discover
   pypi-publish:
+    needs: build-test
     runs-on: ubuntu-latest
     environment:
       name: pypi
