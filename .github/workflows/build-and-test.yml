@@ -28,7 +28,7 @@ jobs:
       id-token: write
     environment:
       name: pypi
-#      url: https://pypi.org/p/csra
+      url: https://pypi.org/p/csra
 
     steps:
       - name: Retrieve distributions

@@ -22,4 +22,4 @@ setup(name="csra",
       long_description=README_CONTENT,
       long_description_content_type="text/markdown",
       entry_points={"console_scripts": [f"csra={MODULE_NAME}.cli:main", ]}
-      )
+)
