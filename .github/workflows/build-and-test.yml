@@ -1,7 +1,7 @@
 name: Python3 Build, Test & Publish
 on: [push]
 jobs:
-  python3:
+  build-test-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
