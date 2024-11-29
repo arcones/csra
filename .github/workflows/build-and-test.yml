@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -13,14 +14,26 @@ jobs:
       - run: pip install -e .
       - run: python -m unittest discover
       - run: python -m build
+
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+
   pypi-publish:
-    needs: test-and-build
     runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/csra
+    needs: test-and-build
     permissions:
       id-token: write
+    environment:
+      name: pypi
+#      url: https://pypi.org/p/csra
+
     steps:
-      - run: ls -lrta
+      - name: Retrieve distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
       - uses: pypa/gh-action-pypi-publish@release/v1
