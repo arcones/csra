@@ -22,7 +22,6 @@ jobs:
     permissions:
       id-token: write
       contents: write
-      actions: write
     environment:
       name: pypi
       url: https://pypi.org/p/csra
