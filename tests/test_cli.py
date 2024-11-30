@@ -24,7 +24,7 @@ class TestCSRA(unittest.TestCase):
     def test_version(self):
         result = run_cli("--version")
         self.assertEqual(0, result.returncode)
-        self.assertIn("csra version 0.0.7", result.stdout)
+        self.assertIn("csra version 0.0.8", result.stdout)
 
 
 def run_cli(*args):
