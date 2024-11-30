@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      contents: write
     environment:
       name: pypi
       url: https://pypi.org/p/csra
@@ -31,3 +32,4 @@ jobs:
           name: release-dists
           path: dist/
       - uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: stefanzweifel/git-auto-commit-action@v5
