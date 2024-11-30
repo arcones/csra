@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Build Package
         uses: actions/checkout@v4
-      - run: pip install bump-my-version
+      - run: pip install build bump-my-version
       - run: bump-my-version bump patch
       - run: python -m build
 
