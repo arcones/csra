@@ -1,5 +1,8 @@
 name: pypi-publish
 on:
+  push:
+#    branches:
+#      - main  # or any branch where you want it to run
   workflow_run:
     workflows:
       - build-and-test
@@ -19,7 +22,6 @@ on:
 jobs:
   pypi-publish:
     runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/main'
     permissions:
       id-token: write
     environment:
