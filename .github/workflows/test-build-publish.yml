@@ -1,14 +1,8 @@
 name: test-build-publish
 on: [ push ]
 jobs:
-  test-build-publish:
+  test-build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
-    environment:
-      name: pypi
-      url: https://pypi.org/p/csra
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -21,18 +15,29 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pip install -e .
       - run: python -m unittest discover
-
+  publish:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      id-token: write
+      contents: write
+    environment:
+      name: pypi
+      url: https://pypi.org/p/csra
+    steps:
       - name: Build Package
-        if: github.ref == 'refs/heads/main'
-        run: bump-my-version bump patch && python -m build
+        uses: actions/checkout@v4
+      - run: pip install bump-my-version
+      - run: bump-my-version bump patch
+      - run: python -m build
 
       - name: Upload Artifact
-        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
         with:
           name: release-dists
           path: dist/
       - uses: pypa/gh-action-pypi-publish@release/v1
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump version
