@@ -1,5 +1,4 @@
-name: Bump version
-
+name: pypi-publish
 on:
   workflow_run:
     workflows:
