@@ -1,12 +1,14 @@
-name: Python3 Test, Build & Publish
+name: build-and-test
 on: [ push ]
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Dependencies & Unit Tests
+        uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           cache: 'pip'
@@ -14,26 +16,3 @@ jobs:
       - run: pip install -e .
       - run: python -m unittest discover
       - run: python -m build
-
-      - name: Upload distributions
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-dists
-          path: dist/
-
-  pypi-publish:
-    runs-on: ubuntu-latest
-    needs: test-and-build
-    permissions:
-      id-token: write
-    environment:
-      name: pypi
-      url: https://pypi.org/p/csra
-
-    steps:
-      - name: Retrieve distributions
-        uses: actions/download-artifact@v4
-        with:
-          name: release-dists
-          path: dist/
-      - uses: pypa/gh-action-pypi-publish@release/v1

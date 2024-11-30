@@ -1,5 +1,7 @@
 [tool.bumpversion]
-current_version = "0.0.2"
+current_version = "0.0.3"
+tag = true
+sign_tags = true
 
 [[tool.bumpversion.files]]
 filename = "setup.py"

@@ -1,0 +1,37 @@
+name: Bump version
+
+on:
+  workflow_run:
+    workflows:
+      - build-and-test
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      bump-type:
+        description: 'Bump Type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+jobs:
+  pypi-publish:
+    runs-on: ubuntu-latest
+#    if: github.ref == 'refs/heads/main'
+    permissions:
+      id-token: write
+    environment:
+      name: pypi
+      url: https://pypi.org/p/csra
+    steps:
+      - name: Bump Version
+        run: bump-my-version bump ${{ inputs.bump-type }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-dists
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
