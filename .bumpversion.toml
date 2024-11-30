@@ -1,8 +1,8 @@
 [tool.bumpversion]
-current_version = "0.0.0"
+current_version = "0.0.9"
 
 [[tool.bumpversion.files]]
-filename = "setup.py"
+filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "sra_collector/__init__.py"
