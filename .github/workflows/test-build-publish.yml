@@ -32,6 +32,7 @@ jobs:
       - run: pipx install poetry
       - run: poetry install
       - run: poetry run bump-my-version bump patch
+      - run: poetry build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
