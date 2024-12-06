@@ -1,6 +1,6 @@
 import argparse
 import sys
-from sra_collector import __version__
+from csra import __version__
 
 def main():
     parser = argparse.ArgumentParser(description="Collect NIH NCBI SRA metadata of several GEO studies in one search")
