@@ -1,15 +1,21 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "csra"
-version = "0.0.9"
+version = "0.0.14"
 description = "Collect NIH NCBI SRA metadata of several GEO studies in one search."
-authors = [
-    { name = "Marta Arcones", email = "marta.arcones@gmail.com" }
-]
+authors = ["Marta Arcones <marta.arcones@gmail.com>"]
 readme = "README.md"
 
-[project.scripts]
-csra = "sra_collector.cli:main"
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = "^0.15.1"
+
+[tool.poetry.scripts]
+csra = "csra.cli:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+bump-my-version = "^0.28.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

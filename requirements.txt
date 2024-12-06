@@ -1,4 +1,0 @@
-setuptools
-build
-bump-my-version
-wheel
