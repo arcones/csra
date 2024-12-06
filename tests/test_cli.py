@@ -29,4 +29,4 @@ def test_fail_multiword_query_not_quoted():
 def test_version():
     result = run_cli("--version")
     assert result.returncode == 0
-    assert "csra version 0.0.10" in result.stdout
+    assert "csra version 0.0.11" in result.stdout
