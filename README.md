@@ -8,5 +8,3 @@ https://docs.pypi.org/trusted-publishers/troubleshooting/
 
 cuando todo poetry esté montado -> pasarlo a typer
 y después conseguir el rollo del demonio y tal
-
-un commit de ejemplo, deberia publicarse la versión 12

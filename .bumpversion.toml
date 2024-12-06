@@ -6,6 +6,3 @@ filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "csra/__init__.py"
-
-[[tool.bumpversion.files]]
-filename = "tests/test_cli.py"
