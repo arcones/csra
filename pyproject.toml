@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "sra_collector"
-version = "0.0.9"
+name = "csra"
+version = "0.0.10"
 description = "Collect NIH NCBI SRA metadata of several GEO studies in one search."
 authors = ["Marta Arcones <marta.arcones@gmail.com>"]
 readme = "README.md"
