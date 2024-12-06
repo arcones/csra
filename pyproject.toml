@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.9"
 
 [tool.poetry.scripts]
-csra = "sra_collector.cli:main"
+csra = "csra.cli:main"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"

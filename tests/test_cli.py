@@ -1,6 +1,4 @@
 import subprocess
-import pytest
-
 
 def run_cli(*args):
     """Helper function to run the csra CLI and return the result."""
